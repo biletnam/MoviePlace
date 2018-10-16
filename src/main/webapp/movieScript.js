@@ -56,6 +56,12 @@ function showOperatingText(type) {
       + reservedCount + " reserved and " + pickedCount + " picked now");
 }
 
+function ticketTextUpdate() {
+  var pickedCount = countSeats("picking");
+  $("#seatsTicketText").text("One ticket price - 100 rur, tickets picked - " + pickedCount
+      + ", PRICE TOTAL - " + (pickedCount * 100) + " rur");
+}
+
 $("#loadSeatsBtn").on("click", function() {
   $("#welcomeTitle, #loadSeatsBtn").hide("fast");
   $("#seatsArea").show("fast");
@@ -94,6 +100,10 @@ $(document).on("click", '.freeSeat', function () {
   showOperatingText("picked");
   $("#" + seat).removeClass("freeSeat");
   $("#" + seat).addClass("pickingSeat");
+  ticketTextUpdate();
+  if (countSeats("picking") < 2) {
+    $("#buyTicketArea").show("fast");
+  }
 });
 
 $(document).on("click", '.pickingSeat', function () {
@@ -101,4 +111,8 @@ $(document).on("click", '.pickingSeat', function () {
   showOperatingText("unpicked");
   $("#" + seat).removeClass("pickingSeat");
   $("#" + seat).addClass("freeSeat");
+  if (countSeats("picking") < 1) {
+    $("#buyTicketArea").hide("fast");
+  }
+  ticketTextUpdate();
 });
