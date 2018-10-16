@@ -10,13 +10,22 @@
   <link rel="stylesheet" type="text/css" href="movieStyles.css">
 </head>
 <body>
-  <div class="mainSpace">
+  <div class="mainSpace default">
     <h2 id="welcomeTitle" class="centered">Welcome, movie junks! <br>We are the best of the best,
       choose your seats and take some rest!</h2><br><br>
     <button id="loadSeatsBtn" class="button-primary-outlined centeredBtn">Choose seats</button>
     <div id="seatsArea" class="hide centered">
-      <h3>Seats:</h3>
+      <h3 id="seatsAreaTitle">Seats:</h3>
       <div id="seatBoxArea"></div>
+      <div id="seatsOutput">
+        <p id="seatsOutputText"></p>
+      </div>
+      <div id="seatsTicketArea">
+        <p id="seatsTicketText"></p>
+        <div id="buyTicketArea" class="hide">
+          <button id="buyTicketBtn" class="button-primary-outlined centeredBtn">Buy ticket</button>
+        </div>
+      </div>
     </div>
   </div>
   <script src="movieScript.js"></script>

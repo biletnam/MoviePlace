@@ -14,6 +14,27 @@ function loadSeat(seat) {
   });
 }
 
+function countFreeSeats() {
+  return $('.freeSeat').length;
+}
+
+function showOperatingText(type) {
+  var freeCount = countFreeSeats();
+  if (type === "free") {
+    if (freeCount < 1) {
+      $("#seatsOutputText").text("Sorry, all seats are sold out!");
+    } else {
+      $("#seatsOutputText").text("There is " + freeCount
+          + " free sits in the theater, you can pick any!");
+    }
+  } else if (type === "freeSeat") {
+    $("#seatsOutputText").text("This seat is free, you can reserve it!");
+  }
+  //alert("free seats count - " + freeCount);
+}
+
+
+
 $("#loadSeatsBtn").on("click", function() {
   $("#welcomeTitle, #loadSeatsBtn").hide("fast");
   $("#seatsArea").show("fast");
@@ -29,4 +50,12 @@ $("#loadSeatsBtn").on("click", function() {
       loadSeat(seat);
     }
   }
+});
+
+$(document).on("mouseenter", '.freeSeat', function () {
+  showOperatingText("free");
+});
+
+$(document).on("mouseleave", '.freeSeat', function () {
+  showOperatingText("free");
 });

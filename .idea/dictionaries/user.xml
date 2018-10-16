@@ -3,6 +3,8 @@
     <words>
       <w>jsrender</w>
       <w>jsviews</w>
+      <w>mouseenter</w>
+      <w>mouseleave</w>
       <w>tmpl</w>
       <w>unpkg</w>
       <w>webserver</w>
