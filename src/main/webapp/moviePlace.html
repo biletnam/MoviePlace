@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MoviePlace</title>
+  <link rel="icon" href="movieIcon.ico" type="image/png">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="//www.jsviews.com/download/jsrender.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="movieStyles.css">
+</head>
+<body>
+  <div class="mainSpace">
+    <h2 id="welcomeTitle" class="centered">Welcome, movie junks! <br>We are the best of the best,
+      choose your seats and take some rest!</h2><br><br>
+    <button id="loadSeatsBtn" class="button-primary-outlined centeredBtn">Choose seats</button>
+    <div id="seatsArea" class="hide centered">
+      <h3>Seats:</h3>
+      <div id="seatBoxArea"></div>
+    </div>
+  </div>
+  <script src="movieScript.js"></script>
+</body>
+</html>

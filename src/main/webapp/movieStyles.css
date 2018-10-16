@@ -1,0 +1,12 @@
+.hide {
+  display: none;
+}
+
+.centered {
+  text-align: center;
+}
+
+.centeredBtn {
+  margin:0 auto;
+  display:block;
+}
