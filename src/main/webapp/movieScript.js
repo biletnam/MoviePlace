@@ -14,26 +14,47 @@ function loadSeat(seat) {
   });
 }
 
-function countFreeSeats() {
-  return $('.freeSeat').length;
+function countSeats(type) {
+  if (type === "picking") {
+    return $('.pickingSeat').length;
+  } else if (type === "reserved") {
+    return $('.reservedSeat').length;
+  } else {
+    return $('.freeSeat').length;
+  }
 }
 
 function showOperatingText(type) {
-  var freeCount = countFreeSeats();
-  if (type === "free") {
-    if (freeCount < 1) {
-      $("#seatsOutputText").text("Sorry, all seats are sold out!");
-    } else {
-      $("#seatsOutputText").text("There is " + freeCount
-          + " free sits in the theater, you can pick any!");
-    }
-  } else if (type === "freeSeat") {
-    $("#seatsOutputText").text("This seat is free, you can reserve it!");
+  var freeCount = countSeats("free");
+  var pickedCount = countSeats("picking");
+  var reservedCount = countSeats("reserved");
+  if (freeCount < 1) {
+    $("#seatsOutputText").text("Sorry, all seats are sold out");
+    return;
   }
-  //alert("free seats count - " + freeCount);
+  if (type === "freeSeat") {
+    $("#seatsOutputText").text("This seat is free, you can reserve it");
+    return;
+  }
+  if (type === "pickingSeat") {
+    $("#seatsOutputText").text("This is one of your desired seats, you can uncheck it");
+    return;
+  }
+  if (type === "reservedSeat") {
+    $("#seatsOutputText").text("This seat is already reserved");
+    return;
+  }
+  if (type === "picked") {
+    $("#seatsOutputText").text("You picked this seat and now can buy it!");
+    return;
+  }
+  if (type === "unpicked") {
+    $("#seatsOutputText").text("You removed this seat from your desired seats list");
+    return;
+  }
+  $("#seatsOutputText").text("There are " + freeCount + " free seats, "
+      + reservedCount + " reserved and " + pickedCount + " picked now");
 }
-
-
 
 $("#loadSeatsBtn").on("click", function() {
   $("#welcomeTitle, #loadSeatsBtn").hide("fast");
@@ -56,6 +77,28 @@ $(document).on("mouseenter", '.freeSeat', function () {
   showOperatingText("free");
 });
 
-$(document).on("mouseleave", '.freeSeat', function () {
+$(document).on("mouseenter", '.pickingSeat', function () {
+  showOperatingText("pickingSeat");
+});
+
+$(document).on("mouseenter", '.reservedSeat', function () {
+  showOperatingText("reservedSeat");
+});
+
+$(document).on("mouseleave", '.seat', function () {
   showOperatingText("free");
+});
+
+$(document).on("click", '.freeSeat', function () {
+  var seat = $(this).attr('id');
+  showOperatingText("picked");
+  $("#" + seat).removeClass("freeSeat");
+  $("#" + seat).addClass("pickingSeat");
+});
+
+$(document).on("click", '.pickingSeat', function () {
+  var seat = $(this).attr('id');
+  showOperatingText("unpicked");
+  $("#" + seat).removeClass("pickingSeat");
+  $("#" + seat).addClass("freeSeat");
 });
