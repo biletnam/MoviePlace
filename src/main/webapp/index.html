@@ -10,24 +10,36 @@
   <link rel="stylesheet" type="text/css" href="movieStyles.css">
 </head>
 <body>
-  <div class="mainSpace default">
-    <h2 id="welcomeTitle" class="centered">Welcome, movie junks! <br>We are the best of the best,
-      choose your seats and take some rest!</h2><br><br>
-    <button id="loadSeatsBtn" class="button-primary-outlined centeredBtn">Choose seats</button>
-    <div id="seatsArea" class="hide centered">
-      <h3 id="seatsAreaTitle">Seats:</h3>
-      <div id="seatBoxArea"></div>
-      <div id="seatsOutput">
-        <p id="seatsOutputText"></p>
-      </div>
-      <div id="seatsTicketArea">
-        <div id="buyTicketArea" class="hide">
-          <p id="seatsTicketText"></p>
-          <button id="buyTicketBtn" class="button-primary-outlined centeredBtn">Buy ticket</button>
-        </div>
+<div class="mainSpace default">
+  <div class="popup-box" id="popup-box-1">
+    <div class="close">X</div>
+    <div class="top">
+      <h2>Tickets successfully brought!</h2>
+    </div>
+    <div class="bottom">
+      <p>Your seats are: <strong class="ticketSeats">A0</strong>.</p>
+      <p>Total seats count - <strong class="ticketSeatsCount">1</strong>.</p>
+      <p>One seat cost - <strong>100 rur.</strong></p>
+      <p>Total paid - <strong class="ticketPrice">100 rur</strong>.</p>
+    </div>
+  </div><br>
+  <h2 id="welcomeTitle" class="centered">Welcome, movie junks! <br>We are the best of the best,
+    choose your seats and take some rest!</h2><br><br>
+  <button id="loadSeatsBtn" class="button-primary-outlined centeredBtn">Choose seats</button>
+  <div id="seatsArea" class="hide centered">
+    <h3 id="seatsAreaTitle">Seats:</h3>
+    <div id="seatBoxArea"></div>
+    <div id="seatsOutput">
+      <p id="seatsOutputText"></p>
+    </div>
+    <div id="seatsTicketArea">
+      <div id="buyTicketArea" class="hide">
+        <p id="seatsTicketText"></p>
+        <button id="buyTicketBtn" class="button-primary-outlined centeredBtn">Buy ticket</button>
       </div>
     </div>
   </div>
-  <script src="movieScript.js"></script>
+</div>
+<script src="movieScript.js"></script>
 </body>
 </html>
