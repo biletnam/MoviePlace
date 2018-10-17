@@ -67,7 +67,7 @@ function ticketTextUpdate() {
 }
 
 $("#loadSeatsBtn").on("click", function() {
-  $("#welcomeTitle, #loadSeatsBtn").hide("fast");
+  $("#welcomeTitle, #loadSeatsBtn").hide();
   $("#seatsArea").show("fast");
   var seatLabels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
   for (var j = 0; j < 10; j++) {
@@ -141,9 +141,15 @@ $(document).ready(function() {
   $(window).scroll(centerBox);
   centerBox();
 
-  $(document).on("click", '#buyTicketBtn', function (e) {
+  $('[class*=popup-link]').click(function(e) {
     e.preventDefault();
     e.stopPropagation();
+    var id = 1;
+    var scrollPos = $(window).scrollTop();
+    $('#popup-box-'+id).show();
+    $('#blackout').show();
+    $('html, body').css('overflow', 'hidden');
+    $('html').scrollTop(scrollPos);
 
     //buy ticket logic is here
     showOperatingText("reserved");
@@ -161,15 +167,7 @@ $(document).ready(function() {
     $(".pickingSeat").removeClass("pickingSeat");
     ticketTextUpdate();
     $("#buyTicketArea").hide("fast");
-
-    //other part of pop-up code
-    var name = $(this).attr('class');
-    var id = name[name.length - 1];
-    var scrollPos = $(window).scrollTop();
-    $('#popup-box-'+id).show();
-    $('#blackout').show();
-    $('html,body').css('overflow', 'hidden');
-    $('html').scrollTop(scrollPos);
+    //end of buy ticket logic
   });
 
   $('[class*=popup-box]').click(function(e) {
@@ -188,7 +186,7 @@ $(document).ready(function() {
     var scrollPos = $(window).scrollTop();
     $('[id^=popup-box-]').hide();
     $('#blackout').hide();
-    $("html,body").css("overflow","auto");
+    $("html, body").css("overflow","auto");
     $('html').scrollTop(scrollPos);
   });
 });
